@@ -1,0 +1,75 @@
+{
+  "name": "switch2obsidian",
+  "displayName": "Switch to Obsidian",
+  "description": "快速从VSCode跳转到Obsidian并打开相同文件",
+  "version": "0.0.1",
+  "publisher": "mochen0514",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Bin-Peng/switch2Obsidian.git"
+  },
+  "engines": {
+    "vscode": "^1.60.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "onCommand:switch2obsidian.openInObsidian"
+  ],
+  "main": "./dist/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "switch2obsidian.openInObsidian",
+        "title": "在Obsidian中打开",
+        "category": "Switch to Obsidian"
+      }
+    ],
+    "menus": {
+      "editor/context": [
+        {
+          "command": "switch2obsidian.openInObsidian",
+          "group": "navigation"
+        }
+      ]
+    },
+    "keybindings": [
+      {
+        "command": "switch2obsidian.openInObsidian",
+        "key": "ctrl+alt+b",
+        "mac": "cmd+alt+b"
+      }
+    ],
+    "configuration": {
+      "title": "Switch to Obsidian",
+      "properties": {
+        "switch2obsidian.obsidianVaultPath": {
+          "type": "string",
+          "default": "",
+          "description": "Obsidian仓库的本地路径"
+        }
+      }
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run package",
+    "compile": "webpack",
+    "watch": "webpack --watch",
+    "package": "webpack --mode production --devtool hidden-source-map",
+    "compile-tests": "tsc -p . --outDir out",
+    "watch-tests": "tsc -p . -w --outDir out",
+    "lint": "eslint src --ext ts"
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.60.0",
+    "@types/node": "^16.11.7",
+    "@typescript-eslint/eslint-plugin": "^5.30.0",
+    "@typescript-eslint/parser": "^5.30.0",
+    "eslint": "^8.18.0",
+    "typescript": "^4.7.4",
+    "webpack": "^5.73.0",
+    "webpack-cli": "^4.10.0",
+    "ts-loader": "^9.3.1"
+  }
+}
